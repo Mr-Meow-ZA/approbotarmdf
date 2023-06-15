@@ -2,11 +2,11 @@ function slowServo3 (deg3: number) {
     if (deg3 > servoPos3) {
         servoPos3 += 1
         motor.servo(motor.Servos.S3, servoPos3)
-        basic.pause(20)
+        basic.pause(5)
     } else if (deg3 < servoPos3) {
         servoPos3 += -1
         motor.servo(motor.Servos.S3, servoPos3)
-        basic.pause(20)
+        basic.pause(5)
     } else {
     	
     }
@@ -41,10 +41,10 @@ function slowServo4 (deg4: number) {
     }
 }
 microbitApp.onButtonUpOption(ButtonOption.Up, function () {
-	
+    motor.servo(motor.Servos.S4, 80)
 })
 microbitApp.onButtonOption(ButtonOption.Up, function () {
-	
+    motor.servo(motor.Servos.S4, 165)
 })
 input.onButtonPressed(Button.B, function () {
 	
@@ -53,11 +53,11 @@ function slowServo2 (deg2: number) {
     if (deg2 > servoPos2) {
         servoPos2 += 1
         motor.servo(motor.Servos.S2, servoPos2)
-        basic.pause(20)
+        basic.pause(5)
     } else if (deg2 < servoPos2) {
         servoPos2 += -1
         motor.servo(motor.Servos.S2, servoPos2)
-        basic.pause(20)
+        basic.pause(5)
     } else {
     	
     }
@@ -77,9 +77,5 @@ servoPos4 = 0
 basic.forever(function () {
     slowServo2(microbitApp.getSliderY())
     slowServo3(microbitApp.getSliderZ())
-    if (0 == microbitApp.getToggleState(ToggleOption.Toggle1)) {
-        slowServo1(microbitApp.getSliderX())
-    } else {
-        slowServo4(microbitApp.getSliderX())
-    }
+    slowServo1(microbitApp.getSliderX())
 })
